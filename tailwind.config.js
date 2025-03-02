@@ -6,8 +6,14 @@ export default {
     ],
     theme: {
       extend: {
+        colors: {
+          'pink': '#FF007F', 
+          'pink-dark': '#E60073',
+          'black': '#000000',
+          'gray-dark': '#1E1E1E',
+        },
         fontFamily: {
-          sans: ['Inter', 'sans-serif'],
+          'sans': ['Poppins', 'sans-serif'],
         },
       },
     },

@@ -1,3 +1,26 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap'); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+/* Custom global styles */
+body {
+  background-color: #000000; /* Black background */
+  color: #ffffff; /* White text */
+  /* font-family: "Noto Sans", serif; Modern font */
+}
+
+
+@layer utilities {
+  .text-pink {
+    color: #ff007f; 
+  }
+  .bg-pink {
+    background-color: #ff007f;
+  }
+  .border-pink {
+    border-color: #ff007f;
+  }
+}

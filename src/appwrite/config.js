@@ -13,7 +13,7 @@ export class Service{
                     this.bucket = new Storage(this.client)
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}){
+    async createPost({title, slug, content, featured_image, status, user_id}){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -22,9 +22,9 @@ export class Service{
                 {
                     title,
                     content,
-                    featuredImage,
+                    featured_image,
                     status,
-                    userId,
+                    user_id,
                 }
             )
         } catch (error) {
@@ -32,7 +32,7 @@ export class Service{
         }
     }
 
-    async updatePost(slug, {title, content, featuredImage, status}){
+    async updatePost(slug, {title, content, featured_image, status}){
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
@@ -40,7 +40,7 @@ export class Service{
                 slug,{
                     title,
                     content,
-                    featuredImage,
+                    featured_image,
                     status,
                 }
             )
@@ -49,15 +49,16 @@ export class Service{
         }
     }
 
-    async deleteFile(fileId){
+    async deletePost(slug){
         try {
-            await this.bucket.deleteFile( 
-                conf.appwriteBucketId,
-                fileId,
+            await this.databases.deleteDocument( 
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
             );
             return true
         } catch (error) {
-            console.log("Appwrite service :: deleteFile :: error", error);
+            console.log("Appwrite service :: deletePost :: error", error);
             return false
         }
     }
@@ -107,7 +108,7 @@ export class Service{
 
     async deleteFile(fileId){
         try {
-            await this.await.deleteFile(
+            await this.bucket.deleteFile(
                 conf.appwriteBucketId,
                 fileId,
             )
